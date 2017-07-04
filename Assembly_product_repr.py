@@ -20,10 +20,13 @@ class Product_repr(object):
         self.height = height*12
     
     '''To avoid overly large fragment representations, max_size will be a threshold, 
-    every fragment bigger than that value will be represented with lenght=max_size'''
+    every fragment bigger than that value will be represented with lenght=max_size.
+    max_size can be None, in that case, there won't be applied any threshold'''
     def normalized_size(self, frag):
         Frag_len = len(self.frag_list[frag]) * self.proportion
-        if Frag_len > self.frag_max_size:
+        if self.frag_max_size == None:
+            pass
+        elif Frag_len > self.frag_max_size:
             Frag_len = self.frag_max_size
         return Frag_len
     
